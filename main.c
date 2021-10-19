@@ -38,3 +38,24 @@ char * readline (FILE * fp) {
   return lineBuffer;
 
 }
+
+//read text file and dictionary, node linked list
+
+void readDictionary(char * filename) {
+
+  //open file
+
+  FILE *file;
+
+  if((file = fopen(filename, "r"))== NULL ) {
+    printf("Error! File %s does not exist.\n, filename");
+    exit(1);
+  }
+
+  //read line by line
+
+  char * line = NULL;
+  while ((line = readline(file)) != NULL) {
+    
+  }
+}
