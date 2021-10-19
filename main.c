@@ -151,6 +151,28 @@ int main() {
       free(line);
       //find shift
 
+      int shiftFound =0;
+      int shift = 0;
+      for(int j = 0; j < 26; j++) {
+        // printf("Shift %d\n", j);
+
+        int found = 1;
+        //check if word belongs to dict
+        Node * node = words;
+        while(node!= NULL) {
+          if (!isDictionaryWord(node->word)) {
+            found = 0;
+            break;
+          }
+          node = node->next;
+        }
+
+        //if found
+        if (found) {
+          //printf(" not found\n");
+        }
+      }
+
     }
   }
 }
