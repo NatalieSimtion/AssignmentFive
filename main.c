@@ -103,6 +103,56 @@ void freeList(Node ** headptr) {
 
 int main() {
   //prepare dict
+  readDictionary("dictionary.txt");
+  //open an output file
+  FILE * file;
+  char * filename = "shifts.txt";
+
+  if((file = fopen(filename,"w"))== NULL) {
+    printf("Error! File %s can't be opened.\n", filename);
+    exit(1);
+  }
+
+  //read a line from stdin 1 by 1
+
+  int index =0;
+  char * line = NULL;
+
+  while((line = readline(stdin))==NULL) {
+    //increase line count
+    index++;
+    //print first sentence
+    if (index == 1) {
+      printf(file,"First line in file:\n");
+      printf("line, %d: %s\n", index, line);
+
+      Node * words = NULL;
+
+      //split line and put them in a linked list
+
+      char * word = strtok(line,"");
+
+      while(word!= NULL){
+        //new node
+        Node * node = (Node *)malloc(sizeof(Node));
+        node ->word = (char *)malloc(sizeof(word) +1);
+        strcpy(node->word,word);
+        node->next = NULL;
+        //prepend 2 words
+        if(words == NULL)
+        words = node;
+        else {
+          node ->next = words;
+          words = node;
+        }
+        word = strtok(NULL, "");
+      }
+
+      free(line);
+      //find shift
+
+    }
+  }
 }
 
 
