@@ -84,5 +84,28 @@ int isDictionaryWord(char * word) {
   //match not found
 }
 
+//free given list
+
+void freeList(Node ** headptr) {
+  //free every node
+
+  Node * node = *headptr;
+
+  while(node != NULL) {
+    Node * next = node ->next;
+    free(node->word);
+    free(node);
+    node = next;
+  }
+
+  *headptr = NULL;
+}
+
+int main() {
+  //prepare dict
+}
+
+
+
 
 
