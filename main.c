@@ -169,11 +169,61 @@ int main() {
 
         //if found
         if (found) {
-          //printf(" not found\n");
+          //printf("found\n");
+          shiftFound=1;
+          shift = j;
+          break;
+        } else {
+          //printf("Not found\n");
+
         }
+
+        //shift every character
+        node = words;
+        while (node != NULL) {
+          //shift by 1
+          for (int i = 0; i < strlen(node->word); i++) {
+            node->word[i]++;
+            if(node->word[i] > 'Z')
+            node->word[i] = 'A';
+            //printf("word: %s\n",node->word);
+          }
+          node = node->next;
+        }
+
+        //printf("shifting\n");
+      
+      }
+      //shift is found
+      if(shiftFound) {
+        if (index == 1) {
+          fprintf(file, "#What this tells me is the first sentence has a Caesar shift of %d\n", shift);
+        } else if(index == 2) {
+          fprintf(file,"#sentence two had a Caesar shift %d\n",shift);
+        } else if (index == 3) {
+          fprintf(file, "sentence three had a Caesar shift of %d\n", shift);
+        } else {
+          fprintf(file,"sentence %d had a Caesar shift of %d\n",index, shift);
+
+          fprintf(file,"%d\n", shift);
+        }
+        //shift is not found
+ 
+      } else {
+        //shouldn't reach here
+        //fprintf(file, "#sentence %d had no obvious Caesar shift\n", index);
+        fprintf(file,"-1\n");
       }
 
+      //free word list
+      freeList(&words);
+
     }
+    //close file
+    fclose(file);
+    //free dict
+    freeList(&dictionary);
+    return 0;
   }
 }
 
