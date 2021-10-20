@@ -35,11 +35,11 @@ void readDictionary(char * filename) {
 
   //open file
 
-  FILE *file;
+  FILE * file;
 
   if((file = fopen(filename, "r"))== NULL ) {
-    printf("Error! File %s does not exist.\n, filename");
-    exit(1);
+     printf("Error! File %s does not exist.\n", filename);
+        exit(1);
   }
 
   //read line by line
@@ -122,9 +122,9 @@ int main() {
     //increase line count
     index++;
     //print first sentence
-    if (index == 1) {
-      printf(file,"First line in file:\n");
-      printf("line, %d: %s\n", index, line);
+    //if (index == 1) {
+   //   printf(file,"First line in file:\n");
+     // printf("line, %d: %s\n", index, line);
 
       Node * words = NULL;
 
@@ -225,7 +225,6 @@ int main() {
     freeList(&dictionary);
     return 0;
   }
-}
 
 
 
